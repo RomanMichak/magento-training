@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <training_cms translate="title" module="training_cms">
+            <title>Training Cms</title>
+            <sort_order>110</sort_order>
+            <children>
+                <cmspage>
+                    <title>Page</title>
+                    <action>adminhtml/cmspage</action>
+                    <sort_order>1</sort_order>
+                </cmspage>
+            </children>
+        </training_cms>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <training_cms>
+                        <title>Training Cms</title>
+                        <children>
+                            <cmspage translate="title" module="training_cms">
+                                <title>Pages</title>
+                            </cmspage>
+                        </children>
+                    </training_cms>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
