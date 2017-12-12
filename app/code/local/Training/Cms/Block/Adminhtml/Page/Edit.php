@@ -34,18 +34,28 @@ class Training_Cms_Block_Adminhtml_Page_Edit extends Mage_Adminhtml_Block_Widget
         }
     }
 
+    /**
+     * @return Training_Cms_Helper_Data
+     */
     protected function _getHelper(){
         return Mage::helper('training_cms');
     }
 
+    /**
+     * @return Training_Cms_Model_Page
+     */
     protected function _getModel(){
         return Mage::registry('current_cms_page');
     }
+
 
     protected function _getModelTitle(){
         return 'Page';
     }
 
+    /**
+     * @return string
+     */
     public function getHeaderText()
     {
         $model = $this->_getModel();
@@ -78,15 +88,12 @@ class Training_Cms_Block_Adminhtml_Page_Edit extends Mage_Adminhtml_Block_Widget
     }
 
     /**
-     * Get form save URL
-     *
-     * @deprecated
-     * @see getFormActionUrl()
+     * Get URL for submitting form
      * @return string
+     * @throws Exception
      */
-    public function getSaveUrl()
+    public function getFormActionUrl()
     {
-        $this->setData('*/*/save', 'save');
-        return $this->getFormActionUrl();
+        return $this->getUrl('*/*/save', array($this->_objectId => $this->getRequest()->getParam($this->_objectId)));
     }
 }

@@ -12,6 +12,7 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
 
     protected function _prepareForm()
     {
+        /** @var Training_Cms_Model_Page $model */
         $model = Mage::registry('current_cms_page');
 
         $form = new Varien_Data_Form(array(
@@ -31,18 +32,7 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
         if ($model->getId()) {
             $fieldset->addField('page_id', 'hidden', array('name' => 'page_id'));
         }
-
-        $fieldset->addField(
-            'category_id',
-            'select',
-            array(
-                'name' => 'category_id',
-                'options' => ['1' => '1', '2' => '2', '3' => '3'],
-                'label' => $this->__('Category'),
-                'title' => $this->__('Category'),
-                'required' => true,
-            )
-        );
+        
         $fieldset->addField(
             'code',
             'text',

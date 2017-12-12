@@ -12,7 +12,6 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
      */
     public function listAction()
     {
-
         $this->_getSession()->setFormData([]);
 
         $this->_title($this->__('Training Cms'))
