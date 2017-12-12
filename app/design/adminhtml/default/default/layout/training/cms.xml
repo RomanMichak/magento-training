@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_cmspage_list>
+        <reference name="content">
+            <block type="training_cms/adminhtml_page" name="training_cms.page.list"/>
+        </reference>
+    </adminhtml_cmspage_list>
+    <adminhtml_cmspage_grid>
+        <remove name="root"/>
+        <block type="training_cms/adminhtml_page_grid" name="training_cms.page.grid" output="toHtml" />
+    </adminhtml_cmspage_grid>
+    <adminhtml_cmspage_edit>
+        <reference name="content">
+            <block type="training_cms/adminhtml_page_edit" name="training_cms.page.edit" />
+        </reference>
+    </adminhtml_cmspage_edit>
+</layout>

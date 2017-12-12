@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Training_Cms>
+            <version>0.1.1</version>
+        </Training_Cms>
+    </modules>
+    <global>
+        <blocks>
+            <training_cms>
+                <class>Training_Cms_Block</class>
+            </training_cms>
+        </blocks>
+        <helpers>
+            <training_cms>
+                <class>Training_Cms_Helper</class>
+            </training_cms>
+        </helpers>
+        <models>
+            <training_cms>
+                <class>Training_Cms_Model</class>
+                <resourceModel>training_cms_resource</resourceModel>
+            </training_cms>
+            <training_cms_resource>
+                <class>Training_Cms_Model_Resource</class>
+                <entities>
+                    <page>
+                        <table>training_cms_page</table>
+                    </page>
+                </entities>
+            </training_cms_resource>
+        </models>
+
+        <resources>
+            <training_cms_setup>
+                <setup>
+                    <module>Training_Cms</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </training_cms_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <training_cms after="Mage_Adminhtml">Training_Cms_Adminhtml</training_cms>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <training_cms>
+                    <file>training/cms.xml</file>
+                </training_cms>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
