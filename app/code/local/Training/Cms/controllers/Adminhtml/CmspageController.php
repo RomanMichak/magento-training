@@ -41,7 +41,7 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
     {
         /** @var Training_Cms_Model_Page $model */
         $model = Mage::getModel('training_cms/page');
-        $id = $this->getRequest()->getParam('id');
+        $id = $this->getRequest()->getParam('page_id');
 
         try {
             Mage::register('current_cms_page', $model);
@@ -52,11 +52,11 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
                 }
             }
 
+            $pageTitle = $this->__('New cms page');
             if ($model->getId()) {
                 $pageTitle = $this->__('Edit %s cms page', $model->getTitle());
-            } else {
-                $pageTitle = $this->__('New cms page');
             }
+
             $this->_title($this->__('Training Cms'))
                 ->_title($this->__('Page'))
                 ->_title($this->__($pageTitle));
@@ -83,7 +83,7 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
             $this->_getSession()->setFormData($data);
             /** @var Training_Cms_Model_Page $model */
             $model = Mage::getModel('training_cms/page');
-            $id = $this->getRequest()->getParam('id');
+            $id = $this->getRequest()->getParam('page_id');
 
             try {
                 if ($id) {
@@ -95,20 +95,20 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
                 $this->_getSession()->addSuccess($this->__('Cms page was successfully saved!'));
 
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', ['id' => $model->getId()]);
-                } else {
-                    $this->_redirect('*/*/list');
+                    $this->_redirect('*/*/new');
+                    return;
                 }
+                $this->_redirect('*/*/list');
+
             } catch (Exception $exception) {
                 Mage::logException($exception);
                 $this->_getSession()->addError($exception->getMessage());
                 if ($model && $model->getId()) {
-                    $this->_redirect('*/*/edit', ['id' => $model->getId()]);
-                } else {
-                    $this->_redirect('*/*/new');
+                    $this->_redirect('*/*/edit', ['page_id' => $model->getId()]);
+                    return;
                 }
+                $this->_redirect('*/*/new');
             }
-
             return;
         }
 
@@ -120,7 +120,7 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
     {
         /** @var Training_Cms_Model_Page $model */
         $model = Mage::getModel('training_cms/page');
-        $id = $this->getRequest()->getParam('id');
+        $id = $this->getRequest()->getParam('page_id');
 
         try {
             if ($id) {
@@ -142,7 +142,7 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
     }
 
     /**
-     * Delete few pages in a row by their ids
+     * Delete few pages in a row by ids
      */
     public function massDeleteAction()
     {
@@ -157,11 +157,10 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
                     $pages->delete();
                 }
                 $this->_getSession()->addSuccess($this->__('Total of %d record(s) were deleted.', count($pageIds)));
-                $this->_redirect('*/*/list');
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
-                $this->_redirect('*/*/list');
             }
         }
+        $this->_redirect('*/*/list');
     }
 }

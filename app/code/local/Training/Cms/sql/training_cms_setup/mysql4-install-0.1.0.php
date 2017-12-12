@@ -82,7 +82,7 @@ $table = $installer->getConnection()
         null,
         array(
             'nullable' => false,
-            'default' => Varien_Db_Ddl_Table::TIMESTAMP_UPDATE,
+            'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT_UPDATE,
         ),
         'UpdatedAt'
     );

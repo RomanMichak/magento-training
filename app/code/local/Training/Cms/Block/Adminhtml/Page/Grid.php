@@ -6,8 +6,8 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
     {
         parent::_construct();
 
-        $this->setId('training_cms_page_list');
-        $this->setDefaultSort('id');
+        $this->setId('page_id');
+        $this->setDefaultSort('page_id');
     }
 
     protected function _prepareCollection()
@@ -120,12 +120,12 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
                    array(
                        'caption' => $this->__('Edit'),
                        'url' => array('base' => '*/*/edit'),
-                       'field' => 'id',
+                       'field' => 'page_id',
                    ),
                    array(
                        'caption' => $this->__('Delete'),
                        'url' => array('base' => '*/*/delete'),
-                       'field' => 'id',
+                       'field' => 'page_id',
                    ),
                )
            )
@@ -140,7 +140,7 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', array('page_id' => $row->getId()));
     }
 
     protected function _prepareMassaction()
@@ -156,6 +156,4 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
 
         return $this;
     }
-
-
 }

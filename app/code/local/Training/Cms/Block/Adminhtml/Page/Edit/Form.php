@@ -15,21 +15,21 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
         $model = Mage::registry('current_cms_page');
 
         $form = new Varien_Data_Form(array(
-            'id'        => 'edit_form',
-            'action'    => $this->getUrl('*/*/save', array('id' => $this->getRequest()->getParam('id'))),
-            'method'    => 'post'
+            'id' => 'edit_form',
+            'action' => $this->getUrl('*/*/save', array('page_id' => $this->getRequest()->getParam('page_id'))),
+            'method' => 'post'
         ));
 
         $fieldset = $form->addFieldset(
             'base_fieldset',
             array(
-                'legend'=> $this->__('CMS Page Information'),
+                'legend' => $this->__('CMS Page Information'),
                 'class' => 'fieldset-wide',
             )
         );
 
         if ($model->getId()) {
-            $fieldset->addField('id', 'hidden', array('name' => 'id'));
+            $fieldset->addField('page_id', 'hidden', array('name' => 'page_id'));
         }
 
         $fieldset->addField(
@@ -51,6 +51,7 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
                 'label' => $this->__('Code'),
                 'title' => $this->__('Code'),
                 'required' => true,
+                'class' => 'validate-code'
             )
         );
         $fieldset->addField(
@@ -71,6 +72,7 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
                 'label' => $this->__('Url'),
                 'title' => $this->__('Url'),
                 'required' => true,
+                'class' => 'validate-alphanum',
             )
         );
         $fieldset->addField(
@@ -80,17 +82,19 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
                 'name' => 'short_description',
                 'label' => $this->__('Short Description'),
                 'title' => $this->__('Short Description'),
-                'required' => true,
+                'required' => false,
             )
         );
         $fieldset->addField(
             'description',
-            'textarea',
+            'editor',
             array(
                 'name' => 'description',
                 'label' => $this->__('Description'),
                 'title' => $this->__('Description'),
-                'required' => true,
+                'required' => false,
+                'config' => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
+                'wysiwyg' => true,
             )
         );
 

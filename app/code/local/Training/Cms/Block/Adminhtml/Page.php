@@ -6,7 +6,7 @@ class Training_Cms_Block_Adminhtml_Page extends Mage_Adminhtml_Block_Widget_Grid
     {
         $this->_blockGroup = 'training_cms';
         $this->_controller = 'adminhtml_page';
-        $this->_headerText =$this->__('List Pages');
+        $this->_headerText = $this->__('List Pages');
 
         parent::_construct();
     }
