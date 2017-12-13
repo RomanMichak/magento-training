@@ -10,7 +10,7 @@ app/code/local/*
 app/code/local/Training/*
 !app/code/local/Training/Cms/
 
-#exclude my training layout
+#exclude adminhtml training layout
 !app/design/
 app/design/*
 !app/design/adminhtml/
@@ -23,7 +23,7 @@ app/design/adminhtml/default/default/*
 app/design/adminhtml/default/default/layout/*
 !app/design/adminhtml/default/default/layout/training/
 
-#exclude training templates
+#exclude frontend training templates
 !app/design/frontend/
 app/design/frontend/*
 !app/design/frontend/base/

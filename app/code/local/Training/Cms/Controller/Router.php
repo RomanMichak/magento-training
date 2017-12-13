@@ -19,8 +19,8 @@ class Training_Cms_Controller_Router extends Mage_Core_Controller_Varien_Router_
         $params = explode('/', $pathInfo);
 
         if (isset($params[0]) && $params[0] === 'cmsblog') {
-                $request->setModuleName('cmsblog')
-                    ->setControllerName('blog')
+                $request->setModuleName('cmspage')
+                    ->setControllerName('page')
                     ->setActionName('view');
             if (count($params) === 2) {
                 $request->setParam('page_url', $params[1]);
@@ -34,7 +34,7 @@ class Training_Cms_Controller_Router extends Mage_Core_Controller_Varien_Router_
             /** @var string $controllerClassName */
             $controllerClassName = $this->_validateControllerClassName(
                 'Training_Cms',
-                'blog'
+                'page'
             );
 
             // Get controller class instance for dispatching action
@@ -43,7 +43,7 @@ class Training_Cms_Controller_Router extends Mage_Core_Controller_Varien_Router_
                 $request,
                 $this->getFront()->getResponse()
             );
-            $request->setRouteName('cmsblog');
+            $request->setRouteName('cmspage');
             $request->setDispatched();
             $controllerInstance->dispatch('view');
 

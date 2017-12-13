@@ -11,22 +11,39 @@ class Training_Cms_PageController extends Mage_Core_Controller_Front_Action
             return;
         }
 
-        /** @var string $pageId */
-        $pageId = $this->getRequest()->getParam('page_id');
-        if (!$pageId) {
-            $this->norouteAction();
-            return;
-        }
 
-        /** @var Training_Cms_Model_Page $page */
-        $page = Mage::getModel('training_cms/page')->load($pageId);
-        if (!$page->getId()) {
-            $this->norouteAction();
-            return;
-        }
+        /** @var string $pageUrl */
+        $pageUrl = $this->getRequest()->getParam('page_url');
+        if ($pageUrl) {
+            /** @var Training_Cms_Model_Page $page */
+            $page = Mage::getModel('training_cms/page')->load($pageUrl, 'url');
+            if (!$page->getId()) {
+                $this->norouteAction();
+                return;
+            }
 
-        $this->loadLayout();
-        $this->getLayout()->getBlock('training_cms.page.view')->setData('page', $page);
-        $this->renderLayout();
+            $this->loadLayout();
+            $this->getLayout()->getBlock('training_cms.page.view')->setData('page', $page);
+            $this->renderLayout();
+        } else {
+
+            /** @var string $pageId */
+            $pageId = $this->getRequest()->getParam('page_id');
+            if (!$pageId) {
+                $this->norouteAction();
+                return;
+            }
+
+            /** @var Training_Cms_Model_Page $page */
+            $page = Mage::getModel('training_cms/page')->load($pageId);
+            if (!$page->getId()) {
+                $this->norouteAction();
+                return;
+            }
+
+            $this->loadLayout();
+            $this->getLayout()->getBlock('training_cms.page.view')->setData('page', $page);
+            $this->renderLayout();
+        }
     }
 }
