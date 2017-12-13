@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <cmspage_page_view>
+        <reference name="content">
+            <block type="core/template" name="training_cms.page.view" template="training/cms/page.phtml"
+                   output="toHtml"/>
+        </reference>
+    </cmspage_page_view>
+</layout>

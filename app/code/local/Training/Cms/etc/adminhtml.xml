@@ -25,6 +25,17 @@
                             </cmspage>
                         </children>
                     </training_cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <training_cms_pages>
+                                        <title>Training CMS Pages config</title>
+                                    </training_cms_pages>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
             </admin>
         </resources>
