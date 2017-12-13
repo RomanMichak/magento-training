@@ -1,5 +1,15 @@
 <?xml version="1.0"?>
 <config>
+    <default>
+        <web>
+            <routers>
+                <cmsblog>
+                    <area>frontend</area>
+                    <class>Training_Cms_Controller_Router</class>
+                </cmsblog>
+            </routers>
+        </web>
+    </default>
     <modules>
         <Training_Cms>
             <version>0.1.1</version>
@@ -30,7 +40,6 @@
                 </entities>
             </training_cms_resource>
         </models>
-
         <resources>
             <training_cms_setup>
                 <setup>
@@ -62,4 +71,24 @@
             </updates>
         </layout>
     </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <training_cms>
+                    <file>training/cms.xml</file>
+                </training_cms>
+            </updates>
+        </layout>
+        <routers>
+            <cmspage>
+                <use>standard</use>
+                <args>
+                    <module>Training_Cms</module>
+                    <frontName>cmspage</frontName>
+                </args>
+            </cmspage>
+        </routers>
+    </frontend>
+
 </config>

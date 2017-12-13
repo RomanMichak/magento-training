@@ -23,6 +23,21 @@ app/design/adminhtml/default/default/*
 app/design/adminhtml/default/default/layout/*
 !app/design/adminhtml/default/default/layout/training/
 
+#exclude training templates
+!app/design/frontend/
+app/design/frontend/*
+!app/design/frontend/base/
+app/design/frontend/base/*
+!app/design/frontend/base/default/
+app/design/frontend/base/default/*
+!app/design/frontend/base/default/template/
+!app/design/frontend/base/default/layout/
+app/design/frontend/base/default/template/*
+app/design/frontend/base/default/layout/*
+!app/design/frontend/base/default/template/training/
+!app/design/frontend/base/default/layout/training/
+
+
 dev/*
 downloader/*
 errors/*
