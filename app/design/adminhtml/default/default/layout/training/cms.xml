@@ -14,4 +14,18 @@
             <block type="training_cms/adminhtml_page_edit" name="training_cms.page.edit" />
         </reference>
     </adminhtml_cmspage_edit>
+    <adminhtml_cmscategory_list>
+        <reference name="content">
+            <block type="training_cms/adminhtml_category" name="training_cms.category.list"/>
+        </reference>
+    </adminhtml_cmscategory_list>
+    <adminhtml_cmscategory_grid>
+        <remove name="root"/>
+        <block type="training_cms/adminhtml_category_grid" name="training_cms.category.grid" output="toHtml" />
+    </adminhtml_cmscategory_grid>
+    <adminhtml_cmscategory_edit>
+        <reference name="content">
+            <block type="training_cms/adminhtml_category_edit" name="training_cms.category.edit" />
+        </reference>
+    </adminhtml_cmscategory_edit>
 </layout>

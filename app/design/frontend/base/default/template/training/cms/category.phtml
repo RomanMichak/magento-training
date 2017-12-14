@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var $this Mage_Core_Block_Template
+ */
+?>
+<div class="training-cms-category">
+    <div class="training-cms-page-title">
+        <?php echo $this->getData('category')->getTitle(); ?>
+    </div>
+    <div class="training-cms-category-content">
+        <span>Pages:</span><br/>
+        <?php
+        /** @var Training_Cms_Model_Page $page */
+        foreach ($this->getData('category')->getPages() as $page): ?>
+            <a href="/cmspage/page/view/page_id/<?php echo $page->getId();?>"><?php echo $page->getTitle();?></a>
+        <?php endforeach; ?>
+    </div>
+</div>

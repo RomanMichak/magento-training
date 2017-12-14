@@ -12,7 +12,7 @@
     </default>
     <modules>
         <Training_Cms>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Training_Cms>
     </modules>
     <global>
@@ -37,6 +37,9 @@
                     <page>
                         <table>training_cms_page</table>
                     </page>
+                    <category>
+                        <table>training_cms_category</table>
+                    </category>
                 </entities>
             </training_cms_resource>
         </models>

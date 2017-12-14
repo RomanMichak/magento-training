@@ -1,29 +1,19 @@
 <?php
 
-class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Training_Cms_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     protected function _construct()
     {
         parent::_construct();
 
-        $this->setId('page_id');
-        $this->setDefaultSort('page_id');
+        $this->setId('category_id');
+        $this->setDefaultSort('category_id');
     }
 
     protected function _prepareCollection()
     {
-        /** @var Training_Cms_Model_Resource_Page_Collection $collection */
-        $collection = Mage::getResourceModel('training_cms/page_collection');
-
-        // add category.title field to grid collection
-        /** @var string $categoryTableName */
-        $categoryTableName = $collection->getTable('training_cms/category');
-        $collection->getSelect()->joinLeft(
-            $categoryTableName,
-            'main_table.category_id = '.$categoryTableName.'.category_id',
-            ['category' => 'title']
-        );
-
+        /** @var Training_Cms_Model_Resource_Category_Collection $collection */
+        $collection = Mage::getResourceModel('training_cms/category_collection');
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
@@ -32,22 +22,12 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
     protected function _prepareColumns()
     {
        $this->addColumn(
-           'page_id',
+           'category_id',
            array(
-               'header' => $this->__('Page Id'),
+               'header' => $this->__('Category Id'),
                'width' => '50px',
-               'index' => 'page_id',
+               'index' => 'category_id',
                'sortable' => true,
-               'filter' => false,
-           )
-       );
-       $this->addColumn(
-           'category',
-           array(
-               'header' => $this->__('Category'),
-               'width' => '50px',
-               'index' => 'category',
-               'sortable' => false,
                'filter' => false,
            )
        );
@@ -80,26 +60,6 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
            )
        );
        $this->addColumn(
-           'description',
-           array(
-               'header' => $this->__('Description'),
-               'width' => '50px',
-               'index' => 'description',
-               'sortable' => false,
-               'filter' => false,
-           )
-       );
-       $this->addColumn(
-           'short_description',
-           array(
-               'header' => $this->__('Short Description'),
-               'width' => '50px',
-               'index' => 'short_description',
-               'sortable' => false,
-               'filter' => false,
-           )
-       );
-       $this->addColumn(
            'created_at',
            array(
                'header' => $this->__('Created At'),
@@ -127,17 +87,17 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
                'type' => 'action',
                'sortable' => false,
                'filter' => false,
-               'getter' => 'getPageId',
+               'getter' => 'getCategoryId',
                'actions' => array(
                    array(
                        'caption' => $this->__('Edit'),
                        'url' => array('base' => '*/*/edit'),
-                       'field' => 'page_id',
+                       'field' => 'category_id',
                    ),
                    array(
                        'caption' => $this->__('Delete'),
                        'url' => array('base' => '*/*/delete'),
-                       'field' => 'page_id',
+                       'field' => 'category_id',
                    ),
                )
            )
@@ -147,21 +107,21 @@ class Training_Cms_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget
     }
 
     /**
-     * @param Training_Cms_Model_Page $row
+     * @param Training_Cms_Model_Category $row
      * @return string
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('page_id' => $row->getId()));
+        return $this->getUrl('*/*/edit', array('category_id' => $row->getId()));
     }
 
     protected function _prepareMassaction()
     {
-        $this->setMassactionIdField('training_cms_page_id');
-        $this->getMassactionBlock()->setFormFieldName('page_id');
+        $this->setMassactionIdField('training_cms_category_id');
+        $this->getMassactionBlock()->setFormFieldName('category_id');
 
         $this->getMassactionBlock()->addItem('delete', array(
-            'label'=> $this->__('Delete pages'),
+            'label'=> $this->__('Delete categories'),
             'url'  => $this->getUrl('*/*/massDelete', array('' => '')),
             'confirm' => $this->__('Are you sure?')
         ));
