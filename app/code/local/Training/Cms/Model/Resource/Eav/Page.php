@@ -2,9 +2,6 @@
 
 class Training_Cms_Model_Resource_Eav_Page extends Mage_Eav_Model_Entity_Abstract
 {
-
-    const ENTITY = 'training_cms_eav_page';
-
     public function __construct()
     {
         $resource = Mage::getSingleton('core/resource');
@@ -14,5 +11,4 @@ class Training_Cms_Model_Resource_Eav_Page extends Mage_Eav_Model_Entity_Abstrac
             $resource->getConnection('core_write')
         );
     }
-
 }

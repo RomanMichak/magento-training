@@ -8,6 +8,7 @@ class Training_Cms_Model_Observer_Page
             /** @var Training_Cms_Model_Eav_Page $eavPage */
             $eavPage = $observer->getPage();
 
+            /** @var Training_Cms_Model_Page $flatPage */
             $flatPage = Mage::getModel('training_cms/page')->load($eavPage->getPageId());
             $flatPage->setData($eavPage->getData());
             $flatPage->save();

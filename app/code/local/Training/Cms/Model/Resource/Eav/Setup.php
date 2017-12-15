@@ -6,7 +6,7 @@ class Training_Cms_Model_Resource_Eav_Setup extends Mage_Eav_Model_Entity_Setup
     public function getDefaultEntities()
     {
         $entityAttributes = array(
-            Training_Cms_Model_Resource_Eav_Category::ENTITY => array(
+            'training_cms_eav_category' => array(
                 'entity_model' => 'training_cms/eav_category',
                 'attribute_model' => '',
                 'table' => 'training_cms/eav_category',
@@ -74,7 +74,7 @@ class Training_Cms_Model_Resource_Eav_Setup extends Mage_Eav_Model_Entity_Setup
                     ),
                 ),
             ),
-            Training_Cms_Model_Resource_Eav_Page::ENTITY => array(
+            'training_cms_eav_page' => array(
                 'entity_model' => 'training_cms/eav_page',
                 'attribute_model' => '',
                 'table' => 'training_cms/eav_page',
