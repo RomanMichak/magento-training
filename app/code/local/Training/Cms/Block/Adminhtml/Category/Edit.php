@@ -29,19 +29,24 @@ class Training_Cms_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Wi
     /**
      * @return Training_Cms_Helper_Data
      */
-    protected function _getHelper(){
+    protected function _getHelper()
+    {
         return Mage::helper('training_cms');
     }
 
     /**
      * @return Training_Cms_Model_Category
      */
-    protected function _getModel(){
+    protected function _getModel()
+    {
         return Mage::registry('current_cms_category');
     }
 
-
-    protected function _getModelTitle(){
+    /**
+     * @return string
+     */
+    protected function _getModelTitle()
+    {
         return 'Category';
     }
 

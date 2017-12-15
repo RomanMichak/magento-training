@@ -80,14 +80,15 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
         if ($data = $this->getRequest()->getPost()) {
 
             $this->_getSession()->setFormData($data);
-            /** @var Training_Cms_Model_Page $model */
-            $model = Mage::getModel('training_cms/page');
+            /** @var Training_Cms_Model_Eav_Page $model */
+            $model = Mage::getModel('training_cms/eav_page');
             $id = $this->getRequest()->getParam('page_id');
 
             try {
                 if ($id) {
-                    $model->load($id);
+                    $model->load($id, 'page_id');
                 }
+
                 $model->addData($data);
                 $model->save();
 
@@ -117,8 +118,8 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
 
     public function deleteAction()
     {
-        /** @var Training_Cms_Model_Page $model */
-        $model = Mage::getModel('training_cms/page');
+        /** @var Training_Cms_Model_Eav_Page $model */
+        $model = Mage::getModel('training_cms/eav_page');
         $id = $this->getRequest()->getParam('page_id');
 
         try {
@@ -150,7 +151,8 @@ class Training_Cms_Adminhtml_CmspageController extends Mage_Adminhtml_Controller
             $this->_getSession()->addError($this->__('Please select page(s).'));
         } else {
             try {
-                $pages = Mage::getModel('training_cms/page');
+                /** @var Training_Cms_Model_Eav_Page $pages */
+                $pages = Mage::getModel('training_cms/eav_page');
                 foreach ($pageIds as $pageId) {
                     $pages->load($pageId);
                     $pages->delete();

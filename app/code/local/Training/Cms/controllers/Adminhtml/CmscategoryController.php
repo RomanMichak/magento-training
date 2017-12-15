@@ -80,8 +80,8 @@ class Training_Cms_Adminhtml_CmscategoryController extends Mage_Adminhtml_Contro
         if ($data = $this->getRequest()->getPost()) {
 
             $this->_getSession()->setFormData($data);
-            /** @var Training_Cms_Model_Category $model */
-            $model = Mage::getModel('training_cms/category');
+            /** @var Training_Cms_Model_Eav_Category $model */
+            $model = Mage::getModel('training_cms/eav_category');
             $id = $this->getRequest()->getParam('category_id');
 
             try {
@@ -117,8 +117,8 @@ class Training_Cms_Adminhtml_CmscategoryController extends Mage_Adminhtml_Contro
 
     public function deleteAction()
     {
-        /** @var Training_Cms_Model_Category $model */
-        $model = Mage::getModel('training_cms/category');
+        /** @var Training_Cms_Model_Eav_Category $model */
+        $model = Mage::getModel('training_cms/eav_category');
         $id = $this->getRequest()->getParam('category_id');
 
         try {
@@ -150,7 +150,8 @@ class Training_Cms_Adminhtml_CmscategoryController extends Mage_Adminhtml_Contro
             $this->_getSession()->addError($this->__('Please select category(s).'));
         } else {
             try {
-                $categories = Mage::getModel('training_cms/category');
+                /** @var Training_Cms_Model_Eav_Category $categories */
+                $categories = Mage::getModel('training_cms/eav_category');
                 foreach ($categoryIds as $categoryId) {
                     $categories->load($categoryId);
                     $categories->delete();

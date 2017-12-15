@@ -19,6 +19,10 @@ class Training_Cms_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wi
         return parent::_prepareCollection();
     }
 
+    /**
+     * @return Training_Cms_Block_Adminhtml_Category_Grid
+     * @throws Exception
+     */
     protected function _prepareColumns()
     {
        $this->addColumn(
@@ -115,6 +119,9 @@ class Training_Cms_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wi
         return $this->getUrl('*/*/edit', array('category_id' => $row->getId()));
     }
 
+    /**
+     * @return Training_Cms_Block_Adminhtml_Category_Grid
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('training_cms_category_id');

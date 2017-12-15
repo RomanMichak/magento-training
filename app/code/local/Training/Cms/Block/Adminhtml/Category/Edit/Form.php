@@ -10,6 +10,10 @@ class Training_Cms_Block_Adminhtml_Category_Edit_Form extends Mage_Adminhtml_Blo
         $this->setTitle($this->__('CMS Category Information'));
     }
 
+    /**
+     * @return Training_Cms_Block_Adminhtml_Category_Edit_Form
+     * @throws Exception
+     */
     protected function _prepareForm()
     {
         /** @var Training_Cms_Model_Category $model */
