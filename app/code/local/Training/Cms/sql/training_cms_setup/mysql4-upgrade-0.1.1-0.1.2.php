@@ -8,9 +8,9 @@ $installer->startSetup();
  * Creating a table training_cms_page
  */
 $table = $installer->getConnection()
-    ->newTable($installer->getTable('training_cms/page'))
+    ->newTable($installer->getTable('training_cms/category'))
     ->addColumn(
-        'page_id',
+        'category_id',
         Varien_Db_Ddl_Table::TYPE_INTEGER,
         null,
         array(
@@ -19,7 +19,7 @@ $table = $installer->getConnection()
             'nullable' => false,
             'primary' => true,
         ),
-        'PageId'
+        'CategoryId'
     )
     ->addColumn(
         'code',
@@ -49,24 +49,6 @@ $table = $installer->getConnection()
         'Url'
     )
     ->addColumn(
-        'short_description',
-        Varien_Db_Ddl_Table::TYPE_TEXT,
-        null,
-        array(
-            'nullable' => true,
-        ),
-        'ShortDescription'
-    )
-    ->addColumn(
-        'description',
-        Varien_Db_Ddl_Table::TYPE_TEXT,
-        null,
-        array(
-            'nullable' => true,
-        ),
-        'Description'
-    )
-    ->addColumn(
         'created_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
@@ -88,4 +70,14 @@ $table = $installer->getConnection()
     );
 $installer->getConnection()->createTable($table);
 
-$installer->endSetup(); 
+$installer->getConnection()->addForeignKey(
+    $installer->getFkName('training_cms/page', 'category_id', 'training_cms/category','category_id'),
+    $installer->getTable('training_cms/page'),
+    'category_id',
+    $installer->getTable('training_cms/category'),
+    'category_id',
+    Varien_Db_Ddl_Table::ACTION_CASCADE,
+    Varien_Db_Ddl_Table::ACTION_CASCADE
+);
+
+$installer->endSetup();

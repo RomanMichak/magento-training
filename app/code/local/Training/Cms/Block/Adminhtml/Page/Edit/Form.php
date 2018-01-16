@@ -34,6 +34,17 @@ class Training_Cms_Block_Adminhtml_Page_Edit_Form extends Mage_Adminhtml_Block_W
         }
         
         $fieldset->addField(
+            'category_id',
+            'select',
+            array(
+                'name' => 'category_id',
+                'label' => $this->__('Category'),
+                'title' => $this->__('Category'),
+                'required' => true,
+                'values' => Mage::getModel('training_cms/category')->toOptionArray(),
+            )
+        );
+        $fieldset->addField(
             'code',
             'text',
             array(

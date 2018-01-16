@@ -8,8 +8,13 @@
                 <cmspage>
                     <title>Page</title>
                     <action>adminhtml/cmspage</action>
-                    <sort_order>1</sort_order>
+                    <sort_order>2</sort_order>
                 </cmspage>
+                <cmscategory>
+                    <title>Category</title>
+                    <action>adminhtml/cmscategory</action>
+                    <sort_order>1</sort_order>
+                </cmscategory>
             </children>
         </training_cms>
     </menu>
@@ -23,6 +28,9 @@
                             <cmspage translate="title" module="training_cms">
                                 <title>Pages</title>
                             </cmspage>
+                            <cmscategory translate="title" module="training_cms">
+                                <title>Categories</title>
+                            </cmscategory>
                         </children>
                     </training_cms>
                     <system>
@@ -32,6 +40,9 @@
                                     <training_cms_pages>
                                         <title>Training CMS Pages config</title>
                                     </training_cms_pages>
+                                    <training_cms_categories>
+                                        <title>Training CMS Categories config</title>
+                                    </training_cms_categories>
                                 </children>
                             </config>
                         </children>

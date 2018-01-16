@@ -12,10 +12,30 @@
     </default>
     <modules>
         <Training_Cms>
-            <version>0.1.1</version>
+            <version>0.1.3</version>
         </Training_Cms>
     </modules>
     <global>
+        <events>
+            <training_cms_eav_page_save_after>
+                <observers>
+                    <training_cms>
+                        <type>model</type>
+                        <class>training_cms/observer_page</class>
+                        <method>reindexEavToFlat</method>
+                    </training_cms>
+                </observers>
+            </training_cms_eav_page_save_after>
+            <training_cms_eav_category_save_after>
+                <observers>
+                    <training_cms>
+                        <type>model</type>
+                        <class>training_cms/observer_category</class>
+                        <method>reindexEavToFlat</method>
+                    </training_cms>
+                </observers>
+            </training_cms_eav_category_save_after>
+        </events>
         <blocks>
             <training_cms>
                 <class>Training_Cms_Block</class>
@@ -37,6 +57,39 @@
                     <page>
                         <table>training_cms_page</table>
                     </page>
+                    <category>
+                        <table>training_cms_category</table>
+                    </category>
+                    <eav_page>
+                        <table>training_cms_page_eav</table>
+                    </eav_page>
+                    <eav_page_datetime>
+                        <table>training_cms_page_eav_datetime</table>
+                    </eav_page_datetime>
+                    <eav_page_int>
+                        <table>training_cms_page_eav_int</table>
+                    </eav_page_int>
+                    <eav_page_text>
+                        <table>training_cms_page_eav_text</table>
+                    </eav_page_text>
+                    <eav_page_varchar>
+                        <table>training_cms_page_eav_varchar</table>
+                    </eav_page_varchar>
+                    <eav_category>
+                        <table>training_cms_category_eav</table>
+                    </eav_category>
+                    <eav_category_datetime>
+                        <table>training_cms_category_eav_datetime</table>
+                    </eav_category_datetime>
+                    <eav_category_int>
+                        <table>training_cms_category_eav_int</table>
+                    </eav_category_int>
+                    <eav_category_text>
+                        <table>training_cms_category_eav_text</table>
+                    </eav_category_text>
+                    <eav_category_varchar>
+                        <table>training_cms_category_eav_varchar</table>
+                    </eav_category_varchar>
                 </entities>
             </training_cms_resource>
         </models>
@@ -47,6 +100,12 @@
                     <class>Mage_Core_Model_Resource_Setup</class>
                 </setup>
             </training_cms_setup>
+            <training_cms_eavsetup>
+                <setup>
+                    <module>Training_Cms</module>
+                    <class>Training_Cms_Model_Resource_Eav_Setup</class>
+                </setup>
+            </training_cms_eavsetup>
         </resources>
     </global>
 

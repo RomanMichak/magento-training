@@ -6,4 +6,10 @@
                    output="toHtml"/>
         </reference>
     </cmspage_page_view>
+    <cmspage_category_view>
+        <reference name="content">
+            <block type="core/template" name="training_cms.category.view" template="training/cms/category.phtml"
+                   output="toHtml"/>
+        </reference>
+    </cmspage_category_view>
 </layout>
